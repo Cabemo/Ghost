@@ -7,34 +7,75 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 			integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 		<script src="./libs/three.js/three.js"></script>
-		<script src="./libs/three.js/controls/OrbitControls.js"></script>
-		<script src="main.js"></script>
+		<script src="./libs/three.js/loaders/GLTFLoader.js"></script>
 		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
 			body {
+				font-family: 'Nerko One', cursive;
+				color: #fffafa;
 				margin: 0;
 			}
 
-			canvas {
+			#canvas {
 				display: block;
 			}
 
-			.buttons {
+			#menu {
 				position: fixed;
-				width: 100vw;
-				height: 100px;
+				width: max(30vw, 300px);
+				height: max(30vw, 300px);
 				display: flex;
-				justify-content: space-evenly;
+				flex-direction: column;
+				justify-content: space-around;
 				align-items: center;
-				top: 0;
+				background-color: rgba(85, 70, 64, 90);
+				border-radius: 10px;
+				padding: 20px;
+				transform: translate(-50%, -50%);
+				top: 50%;
+				left: 50%;
+				transition: opacity 500ms ease-out;
+			}
+
+			#stats {
+				padding: 10px;
+				border-radius: 10px;
+				position: fixed;
+				top: 1vw;
+				left: 1vw;
+				background-color: rgba(85, 70, 64, 90);
+				width: auto;
+				height: auto;
+				opacity:  0;
+				transition: opacity 500ms ease-out;
+			}
+
+			.button {
+				border: none;
+				font-size: 2rem;
+				border-radius: 10px;
+				width: 50%;
+				transition: transform 500ms ease-out;
+			}
+			.button:hover {
+				transform: scale(1.2);
 			}
 		</style>
 	</head>
 
 	<body>
-		<script>
-			const app = new App();
-			app.init();
-		</script>
+		<div id="canvas"></div>
+		<div id="menu">
+			<h1>Bouncer</h1>
+			<button id="start" class="button">Start</button>
+			<button id="settings" class="button">Settings</button>
+			<button id="help" class="button">Help</button>
+		</div>
+		<div id="stats">
+			<h3>Score: <span id="meters">0</span>m</h3>
+			<h3>Lives: <span id="lives">3</span></h3>
+		</div>
+		<script src="main.js"></script>
 	</body>
 
 </html>
